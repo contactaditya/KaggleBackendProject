@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using System.Data.Entity;
+
+<h2 style="text-align:center">Upload File</h2> <br /> <br />
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+
+</head>
+<body>
+    <div class="text-center">
+        <fieldset>
+                    <div class="text-center">
+                    <label for="UploadFile"> Please Upload Your Excel Files On This Page: </label> <br /> <br />
+            @using (Html.BeginForm("FileUpload", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                <label for="file">
+                    <input type="file" name="file" id="file" style="width: 100%;" /> <br /> <br />
+                    <input type="submit" value="Upload" class="btn btn-default" /> <br /> <br /> <br />
+                </label>
+                
+                 <br/> <br/> <br/> <br/> <br/> <br/>  <br/> <br/> <br/> <br/> <br/> <br/>  <br/> <br/> <br/> <br/> <br/> <br/>
+            }
+
+           @if (TempData["error"] != null)
+           {
+             <script language="javascript">
+                alert('@TempData["error"]');
+            </script>  
+             
+           }
+           
+           @if (TempData["success"] != null)
+           {
+              <script language="javascript">
+                 alert('@TempData["success"]');
+              </script>
+
+           }
+
+        </div>
+
+        </fieldset>
+
+    </div>
+
+
+</body>
+</html>

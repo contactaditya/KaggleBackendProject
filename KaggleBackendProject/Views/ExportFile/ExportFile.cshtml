@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using System.Data.Entity;
+
+<h2 style="text-align:center">Export File</h2> <br/> <br/>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export File</title>
+
+</head>
+<body>
+    <div class="text-center">
+        <fieldset>
+                <div class="text-center">
+                    <label for="UploadFile"> Please Select the Excel file you want to convert to CSV: </label> <br /> <br />
+                    @using (Html.BeginForm("FileExport", "ExportFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <label for="file">
+                            <input type="file" name="file" id="file" style="width: 100%;" /> <br /> <br />
+                            <input type="submit" value="Export" class="btn btn-default" /> 
+                        </label>
+                        
+                        <br/> <br/> <br/> <br/> <br/> <br/>  <br/> <br/> <br/> <br/> <br/> <br/>  <br/> <br/> <br/> <br/> <br/> <br/>
+                    }
+
+                    @if (TempData["error"] != null)
+                    {
+                        <script language="javascript">
+                            alert('@TempData["error"]');
+                        </script>
+
+                    }
+                    
+                    @if (TempData["success"] != null)
+                    {
+                        <script language="javascript">
+                            alert('@TempData["success"]');
+                        </script>
+
+                    }
+                    
+                </div>
+
+        </fieldset>
+
+    </div>
+
+
+</body>
+</html>
+
+
